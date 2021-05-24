@@ -1,0 +1,41 @@
+---
+layout: none
+---
+{% extends "styles/page-template/_template.njk" %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/feedback/_macro.njk" import onsFeedback %}
+
+{% set pageConfig = {
+    "title": "Survey name",
+    "footer": {
+    }
+} %}
+{% block main %}
+    {% call onsPanel({
+        "type": 'success',
+        "classes": 'u-mb-s',
+        "icon": 'check',
+        "iconSize": 'l'
+    }) %}
+        <h1 class="u-fs-l u-mb-xs">A confirmation email has been sent to email@example.com</h1>
+    {% endcall %}
+    {% call onsPanel({
+                "type": "bare",
+                "icon": "lock",
+                "classes": "u-mb-l"
+            })
+        %}
+        The email will be sent from <strong>ons-surveys@notifications.service.gov.uk</strong>
+    {% endcall %}
+    <h2 class="u-fs-m">Didn’t receive an email?</h2>
+    <p class="u-mb-l">It can take a few minutes for the email to arrive. If it doesn’t arrive, check your junk mail folder, or you can <a href="#0">send another confirmation email</a>.</p>
+    {{
+        onsFeedback({
+            "classes": 'u-mt-xl',
+            "heading": 'What do you think about this service?',
+            "content": 'Your comments will help us make improvements',
+            "linkText": 'Give Feedback',
+            "url": '#0'
+        })
+    }}
+{% endblock %}

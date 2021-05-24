@@ -1,0 +1,134 @@
+---
+title: Confirmation
+group: Pages
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/lists/_macro.njk" import onsList %}
+
+A confirmation page lets the user know they have completed a transaction or survey.
+
+{{
+    patternlibExample({"path": "patterns/confirmation/examples/confirmation-survey-full/index.njk"})
+}}
+
+## When to use this pattern
+
+Use this pattern at the end of a survey or transaction when the user has completed their task.
+
+## How to use this pattern
+
+A confirmation page help reassure users that they have completed a survey or transaction, and helps them to understand what to expect next.
+
+When using this pattern you <strong>should</strong>:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'include relevant details in the success panel to reassure the user it was completed correctly. For example, the household address they completed the survey for, or the phone number they entered to get an access code.'
+            },
+            {
+                "text": 'reassure the user by letting them know what will happen to their information or what to expect next, such as the sender ID of a text or email they will receive'
+            },
+            {
+                "text": 'provide a way to resend anything that should have been sent as part of the transaction in case the user didn’t receive it'
+            },
+            {
+                "text": 'include links to the next steps of the process or information the user is likely to need next'
+            }
+        ]
+    })
+}}
+
+When using this pattern you <strong>should not include</strong>:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'a back link to the previous page'
+            }
+        ]
+    })
+}}
+
+When using this pattern you should also consider including:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'a way for the user to save a record of them completing the survey, such as a confirmation email'
+            },
+            {
+                 "text": 'a way for the user to save a record of their answers, such as a print-friendly <a href="{{ pageInfo.rootPath }}/components/summary">summary</a>'
+            },
+            {
+                "text": 'a call to action to <a href="{{ pageInfo.rootPath }}/patterns/feedback">provide feedback about the service</a>'
+            },
+            {
+                "text": 'contact details to get help with the service'
+            }
+        ]
+    })
+}}
+
+## Confirmation email
+
+Users often want to save a record of the confirmation that they have submitted a survey, especially if it is mandatory, like the census. They want proof to show, for example, a member of the field staff visiting to check their household has completed the census.
+
+You should use the confirmation page to ask the user for their email address to send them a confirmation email. Use the [check answers pattern](/patterns/check-answers) to ask the user to confirm their email address is correct before sending the it.
+
+The confirmation email should contain a unique reference to the users particular survey, to reassure them that it is sufficient evidence of them having completed and submitted the survey.
+
+{{
+    patternlibExample({"path": "patterns/confirmation/examples/confirmation-transaction-basic/index.njk"})
+}}
+
+## Saving a copy of survey answers
+
+{{
+    patternlibExample({"path": "patterns/confirmation/examples/confirmation-survey-save-answers/index.njk"})
+}}
+
+## Research on this pattern
+
+During the development of Census 2021, research revealed that asking the user for their email address (to send confirmation) before the survey confirmation page, prevented some users from submitting their answers.
+
+The same research also showed that users:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'want to be sent proof that they have completed the census for their household, to avoid receiving a fine'
+            },
+            {
+                 "text": 'expect a reference number in the confirmation email, unique to their particular submission'
+            },
+            {
+                 "text": 'are not inclined to help promote a survey like the census on their social media, by sharing the fact they have completed it'
+            }
+        ]
+    })
+}}
+
+Research has also shown that users want to save a copy of the confirmation page. A “print this page” link was not a suitable action for those wanting to save it for their records, as most were unfamiliar with printing to a pdf file.
+
+Business survey respondents also expect to be able to save a record of their answers after submitting a survey. This is typically required to be able to compare data across time. More research is required on the pattern for saving survey answers.
+
+{% call onsPanel() %}
+    If you have conducted any user research using this pattern, please feed back your findings via the
+    {{
+        onsExternalLink({
+            "url": "https://github.com/ONSdigital/design-system/discussions/1511",
+            "linkText": "Design System forum"
+        })
+    }}
+{% endcall %}
+
+## Design System forum
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/1511",
+        "linkText": "Discuss ‘Confirmation’ on GitHub"
+    })
+}}

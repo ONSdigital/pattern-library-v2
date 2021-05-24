@@ -1,0 +1,33 @@
+---
+layout: none
+---
+{% extends "styles/page-template/_template.njk" %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/feedback/_macro.njk" import onsFeedback %}
+
+{% set pageConfig = {
+    "title": 'Survey name',
+    "footer": {
+    }
+} %}
+
+{% block main %}
+    {% call onsPanel({
+        "type": 'success',
+        "classes": 'u-mb-s',
+        "icon": 'check',
+        "iconSize": 'xl'
+    }) %}
+        <h1>Thank you for completing the Business Insights and Conditions Survey</h1>
+        <p>Your answers were submitted for Essential Enterprise Ltd. on 10 May 2021 at 16:43</p>
+        <p>Transaction ID: <strong>03v4-f4b0-b1s3-23fk</strong>.</p>
+    {% endcall %}
+    <p>
+        Your answers will be processed in the next few weeks. We may contact you to query your answers via phone or secure message.
+    </p>
+    <p><a href="#0">View, save or print a copy of your answers</a></p>
+    <p>Your answers will only be available for <strong>15 minutes</strong> to keep them secure.</p>
+    <p>For more information on how we use this data. <a href="https://www.ons.gov.uk/surveys">https://www.ons.gov.uk/surveys</a></p>
+{% endblock %}

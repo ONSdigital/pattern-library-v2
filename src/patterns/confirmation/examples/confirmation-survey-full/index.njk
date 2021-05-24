@@ -1,0 +1,65 @@
+---
+layout: none
+---
+{% extends "styles/page-template/_template.njk" %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/feedback/_macro.njk" import onsFeedback %}
+
+{% set pageConfig = {
+    "title": 'Survey name',
+    "footer": {
+    }
+} %}
+
+{% block main %}
+    {% call onsPanel({
+        "type": 'success',
+        "classes": 'u-mb-s',
+        "icon": 'check',
+        "iconSize": 'xl'
+    }) %}
+        <h1>Thank you for completing the Family Resources Survey</h1>
+        <p>Your survey has been submitted for the household at <strong>68 Abingdon Road, Goathill</strong>.</p>
+    {% endcall %}
+    {% call onsPanel({
+                "type": 'bare',
+                "icon": 'lock'
+            })
+        %}
+        Your personal information is protected by law and will be kept confidential
+    {% endcall %}
+    <hr class="u-mt-l">
+    <h2 class="u-mt-m">Get confirmation email</h2>
+    <p>If you would like to be sent confirmation that you have completed your survey, enter your email address</p>
+    <form action="#">
+    {{
+        onsInput({
+            "id": 'email',
+            "type": 'email',
+            "autocomplete": 'email',
+            "label": {
+                "text": 'Email address',
+                "description": 'This will not be stored and only used once to send your confirmation'
+            }
+        })
+    }}
+    {{
+        onsButton({
+            "classes": 'btn-group__btn u-mt-s',
+            "submitType": 'loader',
+            "text": 'Send confirmation'
+        })
+    }}
+    </form>
+    {{
+        onsFeedback({
+            "classes": 'u-mt-xl',
+            "heading": 'What do you think about this service?',
+            "content": 'Your comments will help us make improvements',
+            "linkText": 'Give Feedback',
+            "url": '#0'
+        })
+    }}
+{% endblock %}
