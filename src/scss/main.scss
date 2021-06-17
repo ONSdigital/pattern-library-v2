@@ -3,13 +3,13 @@
 @include normalize();
 
 @import 'vars/index';
-@import 'helpers/*.scss';
-@import 'base/*.scss';
-@import 'objects/*.scss';
+@import 'helpers/index';
+@import 'base/index';
+@import 'objects/index';
 @import '../components/**/*.scss';
 @import '../patterns/**/*.scss';
 @import '../styles/**/*.scss';
-@import 'utilities/*.scss';
+@import 'utilities/index';
 
 // Right to left
 @import 'rtl.scss';

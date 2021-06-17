@@ -50,8 +50,7 @@ async function copyAssets() {
 
 async function copyBaseSass() {
   await createFolder(newSassPath);
-  await copyDir(`${sourcePath}/scss/helpers`, `${newSassPath}/helpers`);
-  await copyDir(`${sourcePath}/scss/vars`, `${newSassPath}/vars`);
+  await copyDir(`${sourcePath}/scss`, `${newSassPath}`);
 }
 
 async function run() {
