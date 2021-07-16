@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/password/_test-template.njk';
-import Password from 'components/password/password';
+import Password from '../../../components/password/password';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   id: 'password',
@@ -13,10 +12,8 @@ const params = {
 describe('Component: Password', () => {
   let wrapper, component, checkboxWrap, checkbox, input;
 
-  before(() => awaitPolyfills);
-
   beforeEach(() => {
-    const html = template.render({ params });
+    const html = renderTemplate('components/password/_test-template.njk', { params });
 
     wrapper = document.createElement('div');
     wrapper.innerHTML = html;

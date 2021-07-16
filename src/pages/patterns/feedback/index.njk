@@ -1,0 +1,86 @@
+---
+title: Feedback
+group: Ask users for...
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/lists/_macro.njk" import onsList %}
+
+## When to use this pattern
+Use this pattern whenever you need to prompt your users to give feedback about a live service.
+
+Conduct user research to find out where your users would most likely want to provide feedback. This is typically at the end of a mandatory questionnaire, after they have submitted their answers.
+
+## When not to use this pattern
+Don't ask users for feedback on every page or in the middle of a transaction or mandatory questionnaire they need to complete. 
+
+User research studies found users prefer to give feedback at the end of a questionnaire, rather than be interrupted during it. They don't expect a response, so wouldn't give feedback to report technical issues.
+
+If you need to gather feedback as part of a service's alpha or beta phase, the [phase banner](/components/phase-banner) component should be used.
+
+## How to use this pattern
+Place the feedback call to action on a page where you want to ask the user for feedback. The link in this call to action should open another page with your feedback form on it.
+
+When the user has submitted the feedback form, you should display a thank you message at the top of the page they launched the feedback form from, using the [success panel](/components/panel#success).
+
+If you need to show the thank you message on it's own page, you should always provide a link back to the page they launched the feedback form from.
+
+## Feedback call to action
+Provides a link to the feedback form under a semantically appropriate heading.
+{{
+    patternlibExample({"path": "components/feedback/examples/feedback/index.njk"})
+}}
+
+## Feedback form
+A single-page form asking users to enter their feedback and select a category.
+{{
+    patternlibExample({ "path": "pages/patterns/feedback/examples/feedback-form/index.njk" })
+}}
+
+## How to check a feedback form
+To help users enter valid feedback, you should:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'check they have selected a radio button'
+            },
+            {
+                "text": 'allow them to paste into the field'
+            },
+            {
+                "text": 'check they have entered something in the field'
+            },
+            {
+                "text": 'show an error message if they have not entered anything or not selected a required radio button or drop-down option'
+            }
+        ]
+    })
+}}
+
+### Error messages
+
+Use the [correct errors pattern](/patterns/error-validation) and show the error details above the relevant fields.
+
+Guidance on writing error messages can be found in the [radios component](/components/radios) or [textarea component](/components/textarea).
+
+{{
+    patternlibExample({ "path": "pages/patterns/feedback/examples/feedback-form-errors/index.njk" })
+}}
+
+## Feedback success
+A page with success panel, confirming the feedback has been sent.
+
+{{
+    patternlibExample({ "path": "pages/patterns/feedback/examples/feedback-success/index.njk" })
+}}
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/1388",
+        "linkText": "Discuss the ‘Feedback’ pattern on GitHub"
+    })
+}}

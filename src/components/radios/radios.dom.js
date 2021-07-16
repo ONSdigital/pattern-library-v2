@@ -1,10 +1,10 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 domready(async () => {
   const radios = [...document.querySelectorAll('.js-radio')];
 
   if (radios.length) {
-    const Radios = (await import('components/checkboxes/checkboxes')).default;
+    const Radios = (await import('../checkboxes/checkboxes')).default;
 
     new Radios(radios);
 

@@ -75,8 +75,8 @@
                             <div class="patternlib-page__content">
                                 <header class="patternlib-page__content-header">
                                     <h1 class="u-fs-xxl">
-                                        {% if page.group %}
-                                            <span class="u-fs-m u-db u-mb-xs u-lighter">{{ page.group | replace("...", "") }}</span>
+                                        {% if pageInfo.group %}
+                                            <span class="u-fs-m u-db u-mb-xs u-lighter">{{ pageInfo.group | replace("...", "") }}</span>
                                         {% endif %}
                                         {{ pageInfo.title }}
                                     </h1>
@@ -88,7 +88,7 @@
                         </main>
                     </div>
                 </div>
-                {% if (page.hideSidebar != true) and
+                {% if (pageInfo.hideSidebar != true) and
                     (helpers.subNavigationHelper({ pageInfo: pageInfo }).length > 0)
                 %}
                 {% from "views/partials/sub-navigation/_macro.njk" import patternlibSubNavigation %}
@@ -101,7 +101,7 @@
                         {% endif %}
                         {% for group in helpers.subNavigationHelper({
                             pageInfo: pageInfo,
-                            anchorLinks: page.anchorLinks
+                            anchorLinks: pageInfo.anchorLinks
                         }) %}
                             {% if group.title is defined and group.title %}
                                 <h3 class="u-fs-r--b u-mb-s">{{ group.title }}</h3>

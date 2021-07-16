@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 async function cookiesBanner() {
   const cookiesBanner = [...document.querySelectorAll('.cookies-banner')];

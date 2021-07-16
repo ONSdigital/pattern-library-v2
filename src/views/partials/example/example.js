@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../../js/domready';
 
 class Example {
   constructor(context) {

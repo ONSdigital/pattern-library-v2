@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/button/_test-template.njk';
-import printButton from 'js/print-button';
+import printButton from '../../../js/print-button';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   id: 'button',
@@ -12,10 +11,8 @@ const params = {
 describe('Function: Print Button ', function() {
   let wrapper, buttonElement;
 
-  before(() => awaitPolyfills);
-
   beforeEach(() => {
-    const html = template.render({ params });
+    const html = renderTemplate('components/button/_test-template.njk', { params });
 
     wrapper = document.createElement('div');
     wrapper.innerHTML = html;

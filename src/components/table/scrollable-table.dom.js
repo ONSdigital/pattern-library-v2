@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 export const classTableScrollable = 'table-scrollable';
 

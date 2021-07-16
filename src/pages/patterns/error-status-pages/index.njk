@@ -1,0 +1,246 @@
+---
+title: Error and status pages
+group: Pages
+anchorLinks: true
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/lists/_macro.njk" import onsList %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/text-indent/_macro.njk" import onsTextIndent %}
+
+Error and status pages tell the user there is a problem with the page they are trying to view or with the whole service.
+
+## When to use this pattern
+
+Use this pattern when one of the following occurs:
+
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "the page the user is trying to view cannot be found"
+            },
+            {
+                "text": "a user is denied access to a service"
+            },
+            {
+                "text": "there is a problem with the service"
+            },
+            {
+                "text": "we are doing maintenance on the service"
+            },
+            {
+                "text": "the user’s session has expired and they have been timed out"
+            }
+        ]
+    })
+}}
+
+## How to use this pattern
+
+The content for each type of error may vary depending on the circumstances. Follow these guidelines to ensure that your error message is clear and a solution is provided.
+
+All error and status pages <strong>should</strong>:
+
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "be clear and concise"
+            },
+            {
+                "text": "summarise the problem in the <code>h1</code> heading"
+            },
+            {
+                "text": "explain anything we are doing to fix the problem"
+            },
+            {
+                "text": "let the user know if they need to do anything – with a hyperlinked call to action if needed"
+            },
+            {
+                "text": "give the user a way to contact us for further help if this is needed"
+            }
+        ]
+    })
+}}
+
+All error and status pages <strong>should not</strong>:
+
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "have breadcrumbs"
+            },
+            {
+                "text": "display vague terms or jargon like “500”, “404”, “bad request” or “we are experiencing technical difficulties”"
+            },
+            {
+                "text": "use red text to warn people"
+            },
+            {
+                "text": "use exclamation marks or informal language like “oops”"
+            },
+            {
+                "text": "blame the user"
+            }
+        ]
+    })
+}}
+
+Some error messages will need to give the user a way to contact us for further help. Contact information should either be a link to a specific page that includes phone numbers and opening times, or you should include all numbers and opening times on the error page.
+
+You can ask a content designer to help you write the content to ensure it is clear and helpful for the user.
+
+## Page not found errors
+
+Use this type of error page if the user has tried to view a page that does not exist. This could happen if someone:
+
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "enters a URL incorrectly"
+            },
+            {
+                "text": "enters a URL for a page that does not exist"
+            },
+            {
+                "text": "selects a link or button that takes them to a page that does not exist"
+            }
+        ]
+    })
+}}
+
+It is unlikely you will need to change the content on this example of a “Page not found” error.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-status-pages/examples/page-not-found-error/index.njk" })
+}}
+
+### Page not found, with reference code
+
+Your “Page not found” error page may need to give the user a reference code. Use an [error panel](components/panel#error) to display any reference code your service’s customer support staff may need the user to quote during a call.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-status-pages/examples/page-not-found-error-with-code/index.njk" })
+}}
+
+## Access denied errors
+
+Use this error message if you are denying the user’s access because they cannot be authenticated. For example, the service will not launch because their credentials are not valid for authentication.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-status-pages/examples/access-denied-error/index.njk" })
+}}
+
+### Access to the service is denied after authentication
+
+Use this error message when the user has been successfully authenticated into the service but then an error occurs. This could be because:
+
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "session data is needed, if a user is trying to directly access a certain page in a service"
+            },
+            {
+                "text": "a survey has already been submitted and a user is trying to use the code again"
+            },
+            {
+                "text": "their session has timed out"
+            },
+            {
+                "text": "the token is invalid"
+            },
+            {
+                "text": "the system is guarding against cross-site request forgery"
+            }
+        ]
+    })
+}}
+
+The content of this message will depend on the service. Usually the user just needs to enter an access code or sign in again:
+{{-
+    onsTextIndent({
+        text: '<h1 class="u-fs-m">Sorry, there is a problem</h1>
+        <p>To access this page you need to <a href="#0">re-enter your access code</a>.</p>'
+    })
+}}
+
+or
+
+{{-
+    onsTextIndent({
+        text: '<h1 class="u-fs-m">Sorry, there is a problem</h1>
+        <p>To access this page you need to <a href="#0">sign in again</a>.</p>'
+    })
+}}
+
+## Session timed out errors
+
+Use a session timed out error if you need to store the user's information in a browser session with an expiry time to protect their information. When the session expires, use the error message.
+
+The session timed out error could be needed because a user has been inactive, or because they have followed a link to the middle of a process where the required session data is missing.
+
+The page should:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "use the heading to explain what the user needs to do, for example, “Sorry, you need to sign in again”"
+            },
+            {
+                "text": "give information about why the session timed out"
+            },
+            {
+                "text": "inform the user their progress has been saved if this is relevant"
+            },
+            {
+                "text": "have a link for the user to sign in again"
+            }
+        ]
+    })
+}}
+
+### Session timed out error when user is not signed in
+
+A user may not be signed in but still need to be timed out. For example, if they are carrying out a transaction or request and we need to collect information from them such as an address. Because they are not signed in, the heading and call to action will need to change to reflect what they are doing. For example, “Sorry, you need to start again” and “You need to <a href="#0">start again</a> to request a new access code”.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-status-pages/examples/timed-out-error/index.njk" })
+}}
+
+## Service unavailable errors
+
+Use a service unavailable error page when there is any kind of unexpected problem with the service. All errors should be logged and fixed as soon as possible. Only display this page for a short period of time. If the errors cannot be fixed quickly, then disable the service and display a [maintenance notice](#maintenance-notice) page instead.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-status-pages/examples/server-error/index.njk" })
+}}
+
+### Maintenance notice
+
+Use a maintenance notice page when the service needs to be disabled to fix problems or deploy upgrades. This error page should include the date and time the service will be available if this is known. Update the date and time if it changes to keep the user informed.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-status-pages/examples/maintenance-notice/index.njk" })
+}}
+
+### Browser incompatibility error
+
+Use this error page if you need to tell a user that their web browser is not compatible. For example, it does not support the version of HTTP needed for the service.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-status-pages/examples/browser-incompatible-error/index.njk" })
+}}
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/237",
+        "linkText": "Discuss the ‘Error and status pages’ pattern on GitHub"
+    })
+}}

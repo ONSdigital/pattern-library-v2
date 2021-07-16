@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from './domready';
 
 async function cookiesSettings() {
   const cookiesSettings = [...document.querySelectorAll('[data-module=cookie-settings]')];

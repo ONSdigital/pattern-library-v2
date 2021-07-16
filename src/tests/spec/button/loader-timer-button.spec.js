@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/button/_test-template.njk';
-import SubmitButton from 'components/button/button';
+import SubmitButton from '../../../components/button/button';
+import renderTemplate from '../../helpers/render-template';
 
 describe('Function: Loader Button ', function() {
   let wrapper, buttonElement;
@@ -11,10 +10,8 @@ describe('Function: Loader Button ', function() {
     submitType: 'loader',
   };
 
-  before(() => awaitPolyfills);
-
   beforeEach(() => {
-    const html = template.render({ params });
+    const html = renderTemplate('components/button/_test-template.njk', { params });
 
     wrapper = document.createElement('div');
     wrapper.innerHTML = html;
@@ -70,10 +67,8 @@ describe('Function: Timer Button ', function() {
     submitType: 'timer',
   };
 
-  before(() => awaitPolyfills);
-
   beforeEach(() => {
-    const html = template.render({ params });
+    const html = renderTemplate('components/button/_test-template.njk', { params });
 
     wrapper = document.createElement('div');
     wrapper.innerHTML = html;

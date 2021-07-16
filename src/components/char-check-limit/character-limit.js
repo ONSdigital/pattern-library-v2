@@ -1,4 +1,4 @@
-import { trackEvent } from 'js/analytics';
+import { trackEvent } from '../../js/analytics';
 
 const inputClassLimitReached = 'input--limit-reached';
 const remainingClassLimitReached = 'input__limit--reached';

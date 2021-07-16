@@ -1,19 +1,17 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
 import {
-  cookie,
-  setDefaultConsentCookie,
-  setCookie,
   approveAllCookieTypes,
-  getConsentCookie,
-  setConsentCookie,
-  checkConsentCookieCategory,
   checkConsentCookie,
+  checkConsentCookieCategory,
+  cookie,
+  getConsentCookie,
   getCookie,
   getDomain,
-} from 'js/cookies-functions';
+  setConsentCookie,
+  setCookie,
+  setDefaultConsentCookie,
+} from '../../../js/cookies-functions';
 
 describe('Component: Cookie functions', function() {
-  before(() => awaitPolyfills);
   it('returns the cookie value if not provided with a value to set', function() {
     cookie('ons_cookie_message_displayed', 'testing fetching cookie value');
 

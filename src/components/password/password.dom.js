@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 async function initialisePasswords() {
   const passwordFields = [...document.querySelectorAll('.js-password')];

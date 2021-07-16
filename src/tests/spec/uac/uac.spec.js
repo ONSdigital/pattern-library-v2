@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/access-code/_test-template.njk';
-import UAC from 'components/access-code/uac';
+import UAC from '../../../components/access-code/uac';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   id: 'uac',
@@ -15,12 +14,8 @@ const params = {
 describe('Component: UAC Input', () => {
   let wrapper, input, instance;
 
-  before(() => {
-    return awaitPolyfills;
-  });
-
   beforeEach(() => {
-    const html = template.render({ params });
+    const html = renderTemplate('components/access-code/_test-template.njk', { params });
 
     wrapper = document.createElement('div');
     wrapper.innerHTML = html;

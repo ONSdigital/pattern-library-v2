@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from './domready';
 
 export default function addEventListeners() {
   const buttons = [...document.querySelectorAll('.js-print-btn')];

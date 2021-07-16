@@ -1,5 +1,6 @@
-import domready from 'js/domready';
 import autosize from 'autosize';
+
+import domready from '../../js/domready';
 
 async function initialise() {
   const limitedInputs = [...document.querySelectorAll('.js-char-limit-input')];

@@ -1,0 +1,67 @@
+---
+title: Browser compatibility
+---
+
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+
+The design system must be universally accessible. This means components and patterns to work on every browser and device that users access our services on.
+
+## Test for compatibility
+
+Components and patterns don’t have to look perfect in every browser but users must be able to access and use all the information and features they need, regardless of which browser they use.
+
+Use {{
+    onsExternalLink({
+        "url": "https://www.gov.uk/service-manual/technology/using-progressive-enhancement",
+        "linkText": "progressive enhancement"
+    })
+}} to give your component or pattern the best possible chance of working for the majority of your users.
+
+## Browsers to test in
+
+You should test your component or pattern in these browsers:
+
+{% markdown %}
+| Operating system | Browser           | Version           |
+| ---------------- | ----------------- | ----------------- |
+| _Windows_        | Internet Explorer | 11                |
+|                  | Edge              | Latest 2 versions |
+|                  | Chrome            | Latest 2 versions |
+|                  | Firefox           | Latest 2 versions |
+| _macOS_          | Safari            | 12 and later      |
+|                  | Chrome            | Latest 2 versions |
+|                  | Firefox           | Latest 2 versions |
+| _iOS_            | Safari            | 12.1 and later    |
+|                  | Chrome            | Latest 2 versions |
+| _Android_        | Chrome            | Latest 2 versions |
+|                  | Samsung Internet  | Latest 2 versions |
+{% endmarkdown %}
+
+### Understanding the table
+
+"Latest 2 versions" means the latest stable version and the version immediately before that.
+
+This list in the table is from GDS, based on usage statistics for GOV.UK and represents approximately 95% of the most popular browsers. They update it in January and June every year.
+
+### Testing with assistive technologies
+
+You’ll also need to {{
+    onsExternalLink({
+        "url": "https://www.gov.uk/service-manual/helping-people-to-use-your-service/testing-for-accessibility",
+        "linkText": "make sure your component or pattern works with assistive technologies"
+    })
+}}
+
+## Design for your audience
+
+When designing your component or pattern, you should analyse your users’ choice of:
+
+- operating systems
+- browsers
+- browser versions
+- screen size/resolutions
+- choice of mobile device
+
+If evidence shows that your users have specific needs or extra support requirements, you can use this to make a case for not meeting these browser requirements.
+
+For example, components and patterns used exclusively in products that internal teams use may not need to be tailored to work on smaller viewports, as it is likely that these users will only be using the product on a desktop browser.

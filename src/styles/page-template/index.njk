@@ -53,7 +53,7 @@ The example below shows a themed census version of the ONS page template which s
 
 <pre>
     <code class="patternlib-example__code javascript">
-{# Need double raws to due to nunjucks-html-loader running nunjucks renderer twice #}
+{# Need double raws to due to running nunjucks renderer twice #}
 {% raw %}{% raw %}
 {% extends "page-templates/_template.njk" %}
 {% endraw %}{% endraw %}
@@ -88,27 +88,27 @@ Variables can be set with:
     </code>
 </pre>
 
-{% md %}
+{% markdown %}
 | Variable Name   | Type                                | Required | Description                                                                                                                           |
 | --------------- | ----------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | form            | `FormConfig` [_(ref)_](#formconfig) | false    | A object with configuration to wrap the current page in a form. If `form` variable is not set, the page will not be wrapped in a form |
 | pageConfig      | `PageConfig` [_(ref)_](#pageconfig) | true     | A object with configuration for the current page                                                                                      |
 | release_version | string                              | false    | What CDN version to use. This can also be configured from the `page` configuration object                                             |
-{% endmd %}
+{% endmarkdown %}
 
 ##### FormConfig
 
-{% md %}
+{% markdown %}
 | Variable Name | Type   | Required | Description                                                                |
 | ------------- | ------ | -------- | -------------------------------------------------------------------------- |
 | classes       | string | false    | Classes to apply to the wrapping form                                      |
 | attributes    | object | false    | HTML attributes (for example data attributes) to add to the button form    |
 | method        | string | false    | The method the form should you, if not specified it will default to `POST` |
-{% endmd %}
+{% endmarkdown %}
 
 ##### PageConfig
 
-{% md %}
+{% markdown %}
 | Variable Name | Type                                                | Required                          | Description                                                                                  |
 | ------------- | --------------------------------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------- |
 | cdn           | string                                              | false                             | What CDN version to use                                                                      |
@@ -128,11 +128,11 @@ Variables can be set with:
 | serviceLinks  | `Array<Navigation>` [_(ref)_](/components/header)   | false                             | An array to render the service links list                                                    |
 | footer        | `PageFooter` [_(ref)_](#pagefooter)                 | true                              | Configuration for the page footer                                                            |
 | pageColNumber | string                                              | false                             | sets the number of grid columns for the page (defaults to 8)                                 |
-{% endmd %}
+{% endmarkdown %}
 
 ###### PageHeader
 
-{% md %}
+{% markdown %}
 | Variable Name | Type   | Required                             | Description                                                                            |
 | ------------- | ------ | ------------------------------------ | -------------------------------------------------------------------------------------- |
 | title         | string | false                                | Title for the page header. If not specified this will default to `page.title`          |
@@ -142,21 +142,21 @@ Variables can be set with:
 | titleLogo     | string | false                                | URL for image to use instead of a title string                                         |
 | titleLogoAlt  | string | false (if `titleLogo` not specified) | Alt tag for the title logo                                                             |
 | titleLogoHref | string | false                                | Will wrap the title logo in a link to the specified URL                                |
-{% endmd %}
+{% endmarkdown %}
 
 ###### HeadMeta
 
-{% md %}
+{% markdown %}
 | Variable Name | Type   | Required                             | Description                                                                                                      |
 | ------------- | ------ | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
 | description   | string | true                                 | Description of the current page for search engines.                                                              |
 | canonicalUrl  | string | false                                | URL for the preferred page for search engines to avoid duplicate content penalties. Defaults to current page url |
 | twitterSite   | string | false                                | @username for the website used in the card, for example `@census2021`                                            |
-{% endmd %}
+{% endmarkdown %}
 
 ###### PageFooter
 
-{% md %}
+{% markdown %}
 | Variable Name        | Type                                                     | Required | Description                                                                                          |
 | -------------------- | -------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
 | OGLLink              | `OGLLink` [_(ref)_](/components/footer)                  | false    | An object containing settings for the OGL link                                                       |
@@ -169,7 +169,7 @@ Variables can be set with:
 | button               | `Button` [_(ref)_](/components/button)                   | false    | Settings for save and sign out using the button component                                            |
 | newTabWarning        | string                                                   | false    | Text for warning of links opening in new tabs                                                        |
 | crest                | boolean                                                  | false    | If set to true will add the UK coat of arms to the footer                                            |
-{% endmd %}
+{% endmarkdown %}
 
 #### Blocks
 
@@ -199,7 +199,7 @@ To change the components that are included by default, set their equivalent bloc
     </code>
 </pre>
 
-{% md %}
+{% markdown %}
 | Block Name | Description                                                                         |
 | ---------- | ----------------------------------------------------------------------------------- |
 | headIcons  | Override the default icons used for ONS branded pages                               |
@@ -214,7 +214,7 @@ To change the components that are included by default, set their equivalent bloc
 | main       | Main content and markup                                                             |
 | footer     | Override the default [footer](/components/footer) component                         |
 | bodyEnd    | Add content just after just before the closing `</body>` element                    |
-{% endmd %}
+{% endmarkdown %}
 
 ##### Exploded view of the page template block areas
 

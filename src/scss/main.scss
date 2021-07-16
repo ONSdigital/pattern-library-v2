@@ -1,4 +1,4 @@
-@import 'normalize-scss';
+@import 'normalize';
 
 @include normalize();
 
@@ -12,7 +12,7 @@
 @import 'utilities/index';
 
 // Right to left
-@import 'rtl.scss';
+@import 'overrides/rtl.scss';
 
 // High Contrast Mode
-@import 'hcm.scss';
+@import 'overrides/hcm.scss';

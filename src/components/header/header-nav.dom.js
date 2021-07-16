@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 domready(async () => {
   const toggleMainBtn = document.querySelector('.js-toggle-main');

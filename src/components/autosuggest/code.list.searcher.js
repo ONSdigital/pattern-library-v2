@@ -1,4 +1,4 @@
-import * as Fuse from 'fuse.js';
+import Fuse from 'fuse.js';
 
 export default function queryJson(query, data, searchFields) {
   const options = {

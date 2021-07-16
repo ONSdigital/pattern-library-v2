@@ -1,0 +1,80 @@
+---
+title: News
+group: Pages
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/lists/_macro.njk" import onsList %}
+
+How to display, tag and categorise news articles.
+
+## When to use this pattern
+
+Use this pattern to publish a news article to a public-facing website.
+
+## How to use this pattern
+
+### News index
+
+This index sorts the already-published news so that the most recently posted article is at the top of the list.
+
+Use the [articles component](/components/articles) to build consistent summaries of articles.
+
+A list of [categories](/patterns/news/#categories) appears on the news index, and you could also add contact details for the media team. Another optional feature is “[Follow us](https://ons-design-system.netlify.app/styles/typography/#list-with-social-icons)” social media links to Instagram, Facebook, Twitter and LinkedIn.
+
+If you do not include an image with each article, the news index will use a placeholder. Placeholders do not look professional or support the written content to tell a story. The [articles component](/components/articles) has advice on image dimensions.
+
+{{
+    patternlibExample({ "path": "pages/patterns/news/examples/landing/index.njk" })
+}}
+
+### News article
+
+This is a text page that can include images and videos. Each news article is reached through a link on the news index. It needs to have at least one of the categories: statement or press release.
+
+There is no limit on length. If you think an article seems too long, question the user need for such length with the content author.
+
+The title is important. It will stand out on the news index and it links users to the article. It needs to:
+
+- be in plain English
+- use terms and phrases that reflect the language of users
+- be as short as possible
+- be frontloaded, with the most important information first
+
+Each article needs to have [Previous and Next pagination links](/components/pagination#pager) at the end.
+
+You can add “[Share](/components/share-page)” social media links to Facebook, Twitter and LinkedIn.
+
+{{
+    patternlibExample({ "path": "pages/patterns/news/examples/article/index.njk" })
+}}
+
+### Categories
+
+Allocate at least one category to each news article: either press release or statement. The categories then appear on the news index. A category that has no posts assigned to it will not be visible on the news index. If a user selects a category, it takes them to a news index for all the articles in that category.
+
+Only one category will be visible on the news index, even if the article is assigned to more than one.
+
+{{
+    patternlibExample({ "path": "pages/patterns/news/examples/category/index.njk" })
+}}
+
+### Tags
+
+Tags are not mandatory. Do not use the Tags block if there are no tags. A tag helps to identify an article, for example, “Census 2021”. Good tags help improve search performance. They need to be an important word or phrase that users will recognise. 
+
+You can use more than one tag for each article. Each tag is highlighted in yellow on the news index. An “All posts [tag name]” news index lists all the news posts that use that tag on the website. 
+
+{{
+    patternlibExample({ "path": "pages/patterns/news/examples/tag/index.njk" })
+}}
+
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/1513",
+        "linkText": "Discuss the ‘News’ pattern on GitHub"
+    })
+}}

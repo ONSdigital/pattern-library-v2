@@ -1,7 +1,9 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/header/_test-template.njk';
+import proxyquireify from 'proxyquireify';
 
-import GetViewportDetailsMock from 'stubs/getViewportDetails.stub.spec';
+import renderTemplate from '../../helpers/render-template';
+import GetViewportDetailsMock from '../../stubs/getViewportDetails.stub.spec';
+
+const proxyquire = proxyquireify(require);
 
 const params = {
   toggleButton: {
@@ -43,14 +45,6 @@ const params = {
 
 describe('Component: Navigation', function() {
   const ViewportDetailsMock = new GetViewportDetailsMock();
-  let rewiremock;
-
-  before(resolve => {
-    awaitPolyfills.then(() => {
-      rewiremock = require('rewiremock/webpack').default;
-      resolve();
-    });
-  });
 
   describe('When the viewport is small,', function() {
     beforeEach(function() {
@@ -69,7 +63,9 @@ describe('Component: Navigation', function() {
 
     describe('When the component initialises', function() {
       beforeEach(function() {
-        this.nav = mockInstance(this.toggleMainBtn, this.mainNavList);
+        const HeaderNav = require('../../../components/header/header-nav').default;
+
+        this.nav = new HeaderNav(this.toggleMainBtn, this.mainNavList);
         this.nav.registerEvents = chai.spy(this.nav.registerEvents);
         this.nav.registerEvents();
       });
@@ -82,18 +78,14 @@ describe('Component: Navigation', function() {
         beforeEach(function() {
           ViewportDetailsMock.setParams({ width: 800 });
 
-          rewiremock(() => require('viewport-details'))
-            .es6()
-            .with({ GetViewportDetails: ViewportDetailsMock.getMock() });
+          const HeaderNav = proxyquire('../../../components/header/header-nav', {
+            'viewport-details': {
+              GetViewportDetails: ViewportDetailsMock.getMock(),
+            },
+          }).default;
 
-          rewiremock.enable();
-
-          this.nav = mockInstance(this.toggleMainBtn, this.mainNavList);
+          this.nav = new HeaderNav(this.toggleMainBtn, this.mainNavList);
           this.nav.registerEvents();
-        });
-
-        afterEach(function() {
-          rewiremock.disable();
         });
 
         it('The nav list shouldn\'t be given an "aria-hidden" attribute', function() {
@@ -160,18 +152,14 @@ describe('Component: Navigation', function() {
         beforeEach(function() {
           ViewportDetailsMock.setParams({ width: 375 });
 
-          rewiremock(() => require('viewport-details'))
-            .es6()
-            .with({ GetViewportDetails: ViewportDetailsMock.getMock() });
+          const HeaderNav = proxyquire('../../../components/header/header-nav', {
+            'viewport-details': {
+              GetViewportDetails: ViewportDetailsMock.getMock(),
+            },
+          }).default;
 
-          rewiremock.enable();
-
-          this.nav = mockInstance(this.toggleMainBtn, this.mainNavList);
+          this.nav = new HeaderNav(this.toggleMainBtn, this.mainNavList);
           this.nav.registerEvents();
-        });
-
-        afterEach(function() {
-          rewiremock.disable();
         });
 
         it('The nav list should be given an "aria-hidden" attribute', function() {
@@ -211,7 +199,7 @@ describe('Component: Navigation', function() {
 });
 
 function renderComponent(params) {
-  const html = template.render({ params });
+  const html = renderTemplate('components/header/_test-template.njk', { params });
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = html;
@@ -225,9 +213,4 @@ function renderComponent(params) {
     toggleMainBtn,
     mainNavList,
   };
-}
-
-function mockInstance(toggleMainBtn, mainNavList) {
-  const mockedNav = require('components/header/header-nav').default;
-  return new mockedNav(toggleMainBtn, mainNavList);
 }

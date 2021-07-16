@@ -1,0 +1,117 @@
+---
+title: Phone numbers
+group: Ask users for...
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/lists/_macro.njk" import onsList %}
+
+
+How to ask users for a phone number.
+
+{{
+    patternlibExample({"path": "components/input/examples/telephone/index.njk"})
+}}
+
+## When to use this pattern
+Only ask users for a phone number when your service has a genuine need for this information. For example, to send an access code by text message. 
+
+## How to use this pattern
+
+Use an [input component](/components/input) and set the input type to `tel` to bring up the correct keypad on touch devices.
+
+When using this pattern you should:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'make it clear what type of telephone number you need'
+            },
+            {
+                "text": 'tell users why you need a phone number and what it will be used for'
+            },
+            {
+                "text": 'let users know if you will contact them and when'
+            },
+            {
+                "text": 'make sure you allow the user to enter a phone number in a familiar format'
+            },
+            {
+                "text": 'help users enter a phone number in the correct format'
+            }
+        ]
+    })
+}}
+
+### Make it clear what type of phone number you need
+Use the input label with the [input component](/components/input) to let users know what type of phone number you need, for example, a UK, international or mobile phone number.
+
+### Explain why you need the phone number
+Use the optional `label__description` for hint text to reassure users why you need a phone number and what it will be used for.
+
+### Allow all phone number formats
+The phone number field must accommodate all phone number variations so the user can enter a number in the format they are used to. The length of the field can be adjusted using the [input width classes](/components/input/#width-constrained) to allow for any spaces or common characters, for example, brackets, dashes or country codes.
+
+### Validate phone numbers
+
+To help users enter a valid phone number, you should:
+
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'check they have entered the phone number correctly'
+            },
+            {
+                "text": 'show error validation messages if they have not entered a valid phone number'
+            },
+            {
+                "text": 'allow them to paste the phone number'
+            },
+            {
+                "text": 'ask them to confirm it is correct using the <a href="/patterns/check-answers/">check answers pattern</a>'
+            }
+        ]
+    })
+}}
+
+### Error messages
+Use the [correct errors pattern](https://ons-design-system.netlify.app/patterns/error-validation) and show the error details above the phone number field if it is missing or incorrect.
+{{
+    patternlibExample({ "path": "pages/patterns/phone-numbers/examples/phone-number-error/index.njk"})
+}}
+
+#### If the phone number is missing
+Use “Enter [the required type of phone number]”, for example, “Enter a UK mobile number”.
+
+#### If a phone number is incorrect
+Use “Enter a UK mobile number in a valid format, for example, 07700 912345 or +44 7700 912345”, to give them a clear example of a valid phone number.
+
+Make sure any examples of phone numbers in the error message are suitable for the type of number you are asking for. {{
+    onsExternalLink({
+        "url": "https://www.ofcom.org.uk/phones-telecoms-and-internet/information-for-industry/numbering/numbers-for-drama",
+        "linkText": "Ofcom maintains a list of numbers"
+    })
+}} reserved for use in media that you can use.
+
+## Use autocomplete 
+Use the `autocomplete` attribute when you are asking for a phone number as it helps the user fill out a form more quickly.
+
+To do this, set the autocomplete attribute on the input field to `tel`.
+
+You will need to use the autocomplete attribute to meet {{
+    onsExternalLink({
+        "url": "https://www.w3.org/TR/WCAG21/#identify-input-purpose",
+        "linkText": "WCAG 2.1 AA standards for accessibility"
+    })
+}}
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/1496",
+        "linkText": "Discuss the ‘Phone numbers’ pattern on GitHub"
+    })
+}}

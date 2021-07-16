@@ -1,0 +1,33 @@
+---
+title: See important information
+group: Help users to...
+---
+
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+
+Highlights are visual emphasis used to draw information to the attention of the user.
+
+{{
+    patternlibExample({ "path": "pages/patterns/see-important-information/examples/see-important-information/index.njk"})
+}}
+
+## When to use this pattern
+
+Highlight is used in eQ to draw the attention of the user to a particular value or phrase which is central to the understanding of the sentence. It is used to highlight a section of a sentence or phrase which a user may otherwise miss.
+
+Highlight is also used to indicate a calculated or piped value which was entered previously and is being displayed in a new context.
+
+## How to use this pattern
+
+It should be noted that highlight should be applied to an `<em>` element. If it is applied to another element which does not carry semantic emphasis (for example `<span>`) it will fail in its intent as it no longer provides emphasis to all users.
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/24",
+        "linkText": "Discuss the ‘See important information’ pattern on GitHub"
+    })
+}}

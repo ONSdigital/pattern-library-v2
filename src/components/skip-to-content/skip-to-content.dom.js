@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 import skipToMain from './skip-to-content';
 
 async function initaliseSkipToLink() {

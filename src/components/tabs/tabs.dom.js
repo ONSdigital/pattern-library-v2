@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 async function tabs() {
   const tabs = [...document.querySelectorAll('.tabs')];

@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 const exclusiveWrapperClass = 'js-mutually-exclusive';
 

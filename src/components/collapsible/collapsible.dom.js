@@ -1,4 +1,4 @@
-import domReady from 'js/domready';
+import domready from '../../js/domready';
 
 async function initialiseCollapsibles() {
   const collapsibleComponents = [...document.querySelectorAll('.js-collapsible')];
@@ -19,4 +19,4 @@ async function initialiseCollapsibles() {
   }
 }
 
-domReady(initialiseCollapsibles);
+domready(initialiseCollapsibles);

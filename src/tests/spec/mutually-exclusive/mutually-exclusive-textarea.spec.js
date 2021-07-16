@@ -1,7 +1,6 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/textarea/_test-template.njk';
-import MutuallyExclusive from 'components/mutually-exclusive/mutually-exclusive';
-import CharacterLimit from 'components/char-check-limit/character-limit';
+import CharacterLimit from '../../../components/char-check-limit/character-limit';
+import MutuallyExclusive from '../../../components/mutually-exclusive/mutually-exclusive';
+import renderTemplate from '../../helpers/render-template';
 import { populateTextarea } from '../textarea/character-limit.spec';
 
 const params = {
@@ -36,12 +35,8 @@ const params = {
 describe('Component: Mutually Exclusive Textarea', () => {
   let wrapper, mutuallyExclusiveComponent, textarea, textareaRemaining, checkbox, ariaAlert;
 
-  before(() => {
-    return awaitPolyfills;
-  });
-
   beforeEach(() => {
-    const html = template.render({ params });
+    const html = renderTemplate('components/textarea/_test-template.njk', { params });
 
     wrapper = document.createElement('div');
     wrapper.innerHTML = html;

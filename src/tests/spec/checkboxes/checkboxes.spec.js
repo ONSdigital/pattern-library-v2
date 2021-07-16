@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/checkboxes/_test-template.njk';
-import Checkboxes from 'components/checkboxes/checkboxes';
+import Checkboxes from '../../../components/checkboxes/checkboxes';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   legend: 'What are your favourite pizza toppings?',
@@ -40,8 +39,6 @@ const params = {
 };
 
 describe('Component: Checkboxes', function() {
-  before(() => awaitPolyfills);
-
   beforeEach(function() {
     const component = renderComponent(params);
 
@@ -83,7 +80,7 @@ describe('Component: Checkboxes', function() {
       });
 
       // eslint-disable-next-line prettier/prettier
-      it('it\'s aria-expanded attribute should be set to true', function() {
+      it("it's aria-expanded attribute should be set to true", function() {
         expect(this.checkboxWithOther.getAttribute('aria-expanded')).to.equal('true');
       });
 
@@ -93,7 +90,7 @@ describe('Component: Checkboxes', function() {
         });
 
         // eslint-disable-next-line prettier/prettier
-        it('the checkbox with an other input\'s aria-expanded attribute not change', function() {
+        it("the checkbox with an other input's aria-expanded attribute not change", function() {
           expect(this.checkboxWithOther.getAttribute('aria-expanded')).to.equal('true');
         });
       });
@@ -104,7 +101,7 @@ describe('Component: Checkboxes', function() {
         });
 
         // eslint-disable-next-line prettier/prettier
-        it('it\'s aria-expanded attribute should be set to false', function() {
+        it("it's aria-expanded attribute should be set to false", function() {
           expect(this.checkboxWithOther.getAttribute('aria-expanded')).to.equal('false');
         });
       });
@@ -113,7 +110,7 @@ describe('Component: Checkboxes', function() {
 });
 
 function renderComponent(params) {
-  const html = template.render({ params });
+  const html = renderTemplate('components/checkboxes/_test-template.njk', { params });
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = html;

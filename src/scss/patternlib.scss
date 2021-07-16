@@ -2,8 +2,8 @@
 @import 'helpers/*.scss';
 @import '../views/partials/**/*.scss';
 @import '../styles/page-template/examples/block-areas/block-areas';
-@import '../patterns/question/examples/question-anatomy/pl-question-anatomy';
-@import '~prismjs/themes/prism-tomorrow';
+@import '../pages/patterns/question/examples/question-anatomy/pl-question-anatomy';
+@import 'prism-tomorrow';
 
 .patternlib-page {
   height: 100vh;

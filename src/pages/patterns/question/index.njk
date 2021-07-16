@@ -1,0 +1,74 @@
+---
+title: Question
+group: Pages
+---
+
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+
+{{ patternlibExample({
+    "path": "pages/patterns/question/examples/question-anatomy/index.njk",
+    "noTabs": true
+}) }}
+
+## Accessibility
+
+The Question should always be a `<h1>`. 
+
+### Legend as page/question title
+
+When the question page contains a fieldset, it's quite possible that the page heading (`h1`) is the same as what the legend needs to be. 
+A quick way to avoid visual repitition of the same text is to add the utility class `.u-vh` to visually hide the legend. This doesn't avoid repetition for screen reader users however.
+
+We recommend wrapping the `h1` inside the legend. Include the parameter `"legendIsQuestionTitle": true` inside the `onsQuestion` configuration. Also include `"dontWrap": true` in the configuration of the input you are using.
+
+### When the answer fields should be wrapped in a [fieldset](/components/fieldset) with legend
+
+Under certain circumstances, the answer fields should be wrapped with a [fieldset](/components/fieldset) macro, with a legend that matches the question title. This is to provide context to screen readers about what is being asked when a user focuses on an input element for an answer.
+
+Questions should be wrapped in a fieldset when:
+
+* The question type is [Mutually Exclusive](/components/mutually-exclusive)
+* There are multiple answers **only if** the question type is **not** Date Range
+* If any of the answers to the questions are [Checkboxes](/components/checkboxes)
+* If any of the answers to the questions are [Radios](/components/radios)
+* If one of the answers to the question is a [Date](/patterns/dates)
+* If any of the answers to the question are a [Duration](/patterns/durations)
+
+If this is wrapping a relationships pattern its recommended that `readDescriptionFirst` is set to true on so that the description is read first by screenreaders which will make more sense to the user.
+
+## Examples
+
+### Question as a fieldset
+
+{{ patternlibExample({
+    "path": "components/question/examples/question-fieldset/index.njk"
+}) }}
+
+### Question without a fieldset
+
+{{ patternlibExample({
+    "path": "components/question/examples/question-no-fieldset/index.njk"
+}) }}
+
+### Question with a interviewer instruction
+
+{{ patternlibExample({
+    "path": "components/question/examples/question-ccs/index.njk"
+}) }}
+
+### Interstitial with an interviewer instruction
+
+{{ patternlibExample({
+    "path": "components/question/examples/question-interviewer-note/index.njk"
+}) }}
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/1393",
+        "linkText": "Discuss the ‘Question’ pattern on GitHub"
+    })
+}}

@@ -1,16 +1,14 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/address-finder/_test-template.njk';
-import '../../../scss/main.scss';
-import AutosuggestAddress from '../../../components/address-finder/autosuggest.address';
-import AddressError from '../../../components/address-finder/autosuggest.address.error';
-import AddressSetter from '../../../components/address-finder/autosuggest.address.setter';
-import eventMock from 'stubs/event.stub.spec';
-import fetchStub from 'stubs/window.fetch.stub.spec';
-
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import chaiSpies from 'chai-spies';
 import fetchMock from 'fetch-mock';
+
+import AutosuggestAddress from '../../../components/address-finder/autosuggest.address';
+import AddressError from '../../../components/address-finder/autosuggest.address.error';
+import AddressSetter from '../../../components/address-finder/autosuggest.address.setter';
+import renderTemplate from '../../helpers/render-template';
+import eventMock from '../../stubs/event.stub.spec';
+import fetchStub from '../../stubs/window.fetch.stub.spec';
 
 chai.should();
 chai.use(chaiSpies);
@@ -69,13 +67,6 @@ const params = {
 let lang = 'en';
 
 describe('Autosuggest.address component', function() {
-  before(function(done) {
-    awaitPolyfills.then(() => {
-      this.rewiremock = require('rewiremock/webpack').default;
-      done();
-    });
-  });
-
   describe('When the component initialises', function() {
     beforeEach(function(done) {
       const component = renderComponent(params);
@@ -1049,7 +1040,7 @@ describe('Autosuggest.address component', function() {
 });
 
 function renderComponent(params) {
-  const html = template.render({ params });
+  const html = renderTemplate('components/address-finder/_test-template.njk', { params });
   const wrapper = document.createElement('form');
   wrapper.classList.add('question');
 

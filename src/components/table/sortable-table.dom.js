@@ -1,4 +1,5 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
+
 export const classTableSortable = 'table--sortable';
 
 async function tableSorter() {

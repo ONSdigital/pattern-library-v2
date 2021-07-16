@@ -1,0 +1,121 @@
+{% from "components/message/_macro.njk" import onsMessage %}
+{% from "components/metadata/_macro.njk" import onsMetadata %}
+{% from "components/reply/_macro.njk" import onsReply %}
+
+<div class="grid">
+    <div class="grid__col col-8@m">
+        <section role="region" aria-label="Conversation: BRES 2017 clarification required for Bolts &amp; Ratchets Ltd">
+            <h1 class="u-fs-l"><span class="u-vh">Subject: </span>BRES 2017 clarification required for Bolts &amp; Ratchets Ltd</h1>
+            {{
+                onsMetadata({
+                    "metadataLabel": "Information about the survey and respondant",
+                    "termCol": "3",
+                    "descriptionCol": "9",
+                    "itemsList": [
+                        {
+                            "term": "Survey:",
+                            "descriptions": [
+                                {
+                                    "description": "Bricks & Blocks"
+                                }
+                            ]
+                        },
+                        {
+                            "term": "RU Ref:",
+                            "descriptions": [
+                                {
+                                    "description": "49900000118"
+                                }
+                            ]
+                        },
+                        {
+                            "term": "Business:",
+                            "descriptions": [
+                                {
+                                    "description": "Bolts & Ratchets Ltd."
+                                }
+                            ]
+                        }
+                    ]
+                })
+            }}
+            {% call onsMessage({
+                    "type": 'sent',
+                    "fromLabel": 'From',
+                    "fromValue": 'ONS surveys',
+                    "sentLabel": 'Sent',
+                    "sentValue": 'Today at 12:56'
+                })
+            %}
+            <p>Dear Jacky<br><br>Thanks for returning the BRES 2017 spreadsheet for Bolts &amp; Ratchets. I wonder if I could clarify employee figures for two of the sites, as they’re very different to last year’s figures.
+                The sites are:<br>Macclesfield<br>
+                2015: 45 - 2017: 1<br>and Skipton<br>
+                2015: 11 - 2017: 183<br>Are these figures correct?<br>
+                <br>
+                Many thanks<br>
+                David Cleere<br>
+                BRES Survey Team</p>
+            {% endcall %}
+
+            {% call onsMessage({
+                    "type": 'received',
+                    "fromLabel": 'From',
+                    "fromValue": 'Jackie Turner',
+                    "sentLabel": 'Sent',
+                    "sentValue": 'Today at 13:15'
+                })
+            %}
+                <p>Hi Dave<br>Thanks for your message. Yes, the figures are right - we had a big expansion last year when we bought The Widgets Group and moved staff to Skipton.
+                <br><br>Thanks, Jacky</p>
+            {% endcall %}
+
+            {% call onsMessage({
+                    "type": 'sent',
+                    "fromLabel": 'From',
+                    "fromValue": 'ONS surveys',
+                    "sentLabel": 'Sent',
+                    "sentValue": 'Today at 13:30'
+                })
+            %}
+            <p>Dear Jacky<br><br>Thank you for clarifying. I will now process your data.<br>
+                <br>
+                Many thanks<br>
+                David Cleere<br>
+                BRES Survey Team</p>
+            {% endcall %}
+
+            {% call onsMessage({
+                    "type": 'received',
+                    "fromLabel": 'From',
+                    "fromValue": 'Jackie Turner',
+                    "sentLabel": 'Sent',
+                    "sentValue": 'Today at 13:15',
+                    "unreadLink": '#',
+                    "unreadLinkText": 'Mark unread'
+                })
+            %}
+             <p>Hi Dave<br>Brilliant.
+                <br><br>Thanks, Jacky</p>
+            {% endcall %}
+
+            {{
+                onsReply({
+                    "textarea": {
+                        "id": "reply",
+                        "name": "reply",
+                        "label": {
+                            "text": "Reply"
+                        }
+                    },
+                    "button": {
+                        "type": 'button',
+                        "text": 'Send message',
+                        "classes": 'btn-group__btn'
+                    },
+                    "closeLinkText": 'Close conversation',
+                    "closeLinkUrl": '#0'
+                })
+            }}
+        </section>
+    </div>
+</div>

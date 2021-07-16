@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/table/_test-template.njk';
-import TableSort from 'components/table/sortable-table';
+import TableSort from '../../../components/table/sortable-table';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   sortable: true,
@@ -94,8 +93,6 @@ let originalValues = [],
   sortedValues = [];
 
 describe('Component: Sortable table', function() {
-  before(() => awaitPolyfills);
-
   describe('When the component initialises', function() {
     before(function() {
       const component = renderComponent(params);
@@ -221,7 +218,7 @@ describe('Component: Sortable table', function() {
 });
 
 function renderComponent(params) {
-  const html = template.render({ params });
+  const html = renderTemplate('components/table/_test-template.njk', { params });
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = html;

@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 domready(async () => {
   const checkboxes = [...document.querySelectorAll('.js-checkbox')];
@@ -13,7 +13,7 @@ domready(async () => {
   if (openOther) {
     const parent = openOther.parentNode;
     const checkboxInput = parent.querySelector('.checkbox__input');
-    const CheckCheckbox = (await import('components/radios/check-radios')).default;
+    const CheckCheckbox = (await import('../radios/check-radios')).default;
 
     new CheckCheckbox(checkboxInput, openOther);
   }

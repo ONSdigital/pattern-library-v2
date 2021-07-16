@@ -1,0 +1,127 @@
+---
+title: Numeric values
+group: Ask users for...
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/lists/_macro.njk" import onsList %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+
+How to ask for numeric values such as quantities, financial figures, percentages or units of measurement.
+{{
+    patternlibExample({"path": "components/input/examples/numbers-combined/index.njk"})
+}}
+
+## When to use this pattern
+This pattern should be used when you need to ask the user for numeric values such as:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'the quantity of objects or people (for example, bedrooms, visitors or employees)'
+            },
+            {
+                "text": 'financial figures (for example, salaries, expenditure or turnover)'
+            },
+            {
+                "text": 'estimated percentages (for example, the percentage of female employees)'
+            },
+            {
+                "text": 'volumes and measurements (for example, the size of a workspace)'
+            }
+        ]
+    })
+}}
+
+## How to use this pattern
+Use the [input component](/components/input) macro and set the `type` parameter to “number” to add the correct pattern to trigger a numeric keypad on touch devices.
+{% call onsPanel({
+    "type": 'warn',
+    "classes": 'u-mb-s'
+}) %}
+    Server-side validation on <code>number</code> type input is {{
+        onsExternalLink({
+            "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=1398528",
+            "linkText": "not currently supported by all browsers"
+        })
+    }}
+{% endcall %}
+If you are manually using the component’s html, make sure you set the attributes <code>type="text"</code>, <code>inputmode="numeric"</code> and <code>pattern="[0-9]*"</code>.
+
+### Use appropriately-size number inputs
+You can use the [input width override utility class](/components/input#width-constrained) to set the width of the input when the maximum size of the answer is known.  The class won’t limit the number of digits the user can enter, but will help the user understand what they should enter.
+
+### Numbers
+{{
+    patternlibExample({"path": "components/input/examples/numeric-values/index.njk"})
+}}
+
+### Prefixed values
+Use the `prefix` parameter to specify the abbreviated prefix unit. For example, “£”, and the `title` parameter to specify the full name of the prefix unit for example, “British pounds (GBP)”.
+{{
+    patternlibExample({"path": "components/input/examples/prefixed/index.njk"})
+}}
+
+### Suffixed values
+Use the `suffix` parameter to specify the abbreviated suffix unit for example, “cm”, and the `title` parameter to specify the full name of the suffix unit for example, “centimetres”.
+{{
+    patternlibExample({"path": "components/input/examples/suffixed/index.njk"})
+}}
+
+## How to check numeric input
+To help users enter valid input, you should:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": 'allow them to paste the number'
+            },
+            {
+                "text": 'check they have entered something in the number field'
+            },
+            {
+                "text": 'check that what they have entered is valid'
+            },
+            {
+                "text": 'show an error message if they have not entered anything or what they have entered is not valid'
+            }
+        ]
+    })
+}}
+
+### Error messages
+
+Use the [correct errors pattern](/patterns/error-validation) and show the error details above the number field.
+
+{{
+    patternlibExample({"path": "pages/patterns/numeric-values/examples/percentage-error/index.njk"})
+}}
+
+#### If any of the number fields are empty
+Use “Enter [whatever the numeric value is]”.\
+For example, “Enter the percentage of people with internet access”.
+
+#### If what is entered in one of the fields is not a number
+Use “Enter a number, for example, [appropriate number]”.\
+For example, “Enter a number, for example, 7”.
+
+#### If what is entered in one of the fields is above the maximum value for that field
+Use “Enter a number that is less than [whatever the maximum is]”.\
+For example, “Enter a number that is less than 101” for percentages.
+
+#### If what is entered in one of the fields is below the minimum value for that field
+Use “Enter a number that is greater than [whatever the maximum is]”.\
+For example, “Enter a number that is greater than 10”.
+
+#### If what is entered is not within the required range for that field set
+Use “Enter a number that is between [whatever the minimum is] and [whatever the maximum is]”.\
+For example, “Enter a number that is between 1 and 10”.
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/279",
+        "linkText": "Discuss the ‘Numeric values’ pattern on GitHub"
+    })
+}}

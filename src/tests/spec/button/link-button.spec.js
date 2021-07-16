@@ -1,12 +1,10 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import eventMock from 'stubs/event.stub.spec';
-
-import template from 'components/button/_test-template.njk';
-import SubmitButton from 'components/button/button';
-
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import chaiSpies from 'chai-spies';
+
+import SubmitButton from '../../../components/button/button';
+import renderTemplate from '../../helpers/render-template';
+import eventMock from '../../stubs/event.stub.spec';
 
 chai.should();
 chai.use(chaiSpies);
@@ -22,10 +20,8 @@ describe('Function: Link Button ', function() {
     url: '#',
   };
 
-  before(() => awaitPolyfills);
-
   beforeEach(() => {
-    const html = template.render({ params });
+    const html = renderTemplate('components/button/_test-template.njk', { params });
 
     wrapper = document.createElement('div');
     wrapper.innerHTML = html;

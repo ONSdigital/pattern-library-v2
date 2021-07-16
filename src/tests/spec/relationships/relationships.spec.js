@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/relationships/_test-template.njk';
-import Relationships from 'components/relationships/relationships';
+import Relationships from '../../../components/relationships/relationships';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   dontWrap: true,
@@ -169,8 +168,6 @@ const params = {
 };
 
 describe('Component: Relationships', function() {
-  before(() => awaitPolyfills);
-
   beforeEach(function() {
     const component = renderComponent(params);
 
@@ -218,7 +215,7 @@ describe('Component: Relationships', function() {
 });
 
 function renderComponent(params) {
-  const html = template.render({ params });
+  const html = renderTemplate('components/relationships/_test-template.njk', { params });
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = html;

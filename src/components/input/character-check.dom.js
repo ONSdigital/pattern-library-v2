@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 async function initialise() {
   const checkedInputs = [...document.querySelectorAll('.js-char-check-input')];

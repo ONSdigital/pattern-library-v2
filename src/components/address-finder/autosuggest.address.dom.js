@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 async function initialiseAddressAutosuggests() {
   const addressAutosuggests = [...document.querySelectorAll('.js-address-autosuggest')];

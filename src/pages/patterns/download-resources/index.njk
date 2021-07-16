@@ -1,0 +1,40 @@
+---
+title: Download resources
+group: Help users to...
+experimental: true
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+
+Allow users to filter and sort downloadable resources.
+
+{{
+    onsPanel({
+        "body": "This pattern requires documentation."
+    })
+}}
+
+{{
+    patternlibExample({ "path": "pages/patterns/download-resources/examples/download-resources/index.njk" })
+}}
+
+## Error messages
+
+### If the filter selection returns no results
+
+Use “No results found” to explain the problem to the user and then “Try selecting different options to get results”.
+
+{{
+    patternlibExample({ "path": "pages/patterns/download-resources/examples/download-resources-error/index.njk" })
+}}
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/888",
+        "linkText": "Discuss the ‘Download resources’ pattern on GitHub"
+    })
+}}

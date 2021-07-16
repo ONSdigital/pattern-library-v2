@@ -3,7 +3,7 @@
 // The tab js is based on the GDS tabs component(https://design-system.service.gov.uk/components/tabs/)
 // https://github.com/alphagov/govuk-frontend/blob/master/src/components/tabs/tabs.js
 
-import matchMedia from 'js/utils/matchMedia';
+import matchMedia from '../../js/utils/matchMedia';
 
 const classTab = 'tab';
 const classTabTitle = 'tabs__title';

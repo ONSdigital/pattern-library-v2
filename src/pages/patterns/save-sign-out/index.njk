@@ -1,0 +1,76 @@
+---
+title: Save and sign out
+group: Help users to...
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/lists/_macro.njk" import onsList %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/button/_macro.njk" import onsButton %}
+
+Users can save their progress, sign out and return to the service later. “Save and sign out” will appear in the header or the footer (depending on device width).
+
+{{
+    patternlibExample({ "path": "pages/patterns/save-sign-out/examples/save-sign-out-button/index.njk" })
+}}
+
+## When to use this pattern
+
+Use this pattern when a user has started a survey after entering an [access code](/patterns/uac).
+
+## How to use this pattern
+
+Use the `signoutButton` object that is configured within the [page template](/styles/page-template).  This will ensure the [ghost button](/components/button/#ghost) is placed in the header, or footer when there is not enough space available on a small device.
+
+The following should happen when a user selects the “Save and sign out” button:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "user exits the service"
+            },
+            {
+                "text": "clear any session data from the browser"
+            },
+            {
+                "text": "save any information the user has submitted"
+            },
+            {
+                "text": "direct user to the signed out page"
+            }
+        ]
+    })
+}}
+
+### Signed out page
+
+This page needs to do the following:
+
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "confirm the user’s progress has been saved"
+            },
+            {
+                "text": "warn them to keep their access code safe"
+            },
+            {
+                "text": "have a call to action to access the service again so the user can continue their journey"
+            }
+        ]
+    })
+}}
+
+{{
+    patternlibExample({ "path": "pages/patterns/save-sign-out/examples/signed-out/index.njk" })
+}}
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/1476",
+        "linkText": "Discuss the ‘Correct errors’ pattern on GitHub"
+    })
+}}

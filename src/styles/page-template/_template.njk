@@ -25,9 +25,9 @@
     {% set cdn_url = (pageConfig.cdn.url if pageConfig.cdn is defined and pageConfig.cdn) or "https://cdn.ons.gov.uk/sdc/design-system" %}
     {% set slash = "" if cdn_url | last == "/" else "/" %}
     {% set assetsURL = cdn_url + slash + ((pageConfig.cdn.version  if pageConfig.cdn is defined and pageConfig.cdn) or release_version) %}
-{% elif data is defined and data and data.version is defined and data.version %}
+{% elif pageInfo is defined and pageInfo and pageInfo.version is defined and pageInfo.version %}
     {# Prototype kits #}
-    {% set assetsURL = "/" + data.version %}
+    {% set assetsURL = "/" + pageInfo.version %}
 {% elif pageConfig.assetsURL is defined and pageConfig.assetsURL %}
     {# Runner Dev #}
     {% set assetsURL = pageConfig.assetsURL %}
@@ -38,8 +38,8 @@
 
 {% if pageConfig is defined and pageConfig and pageConfig.title is defined and pageConfig.title %}
     {% set page_title = pageConfig.title %}
-{% elif data is defined and data and data.title is defined and data.title %}
-    {% set page_title = data.title %}
+{% elif pageInfo is defined and pageInfo and pageInfo.title is defined and pageInfo.title %}
+    {% set page_title = pageInfo.title %}
 {% else %}
     {% set page_title = "ONS Design System" %}
 {% endif %}
@@ -237,10 +237,6 @@
                 }
             })();
         </script>
-
-        {% if devMode is defined and devMode %}
-            <script>document.write('<script src="//' + (location.hostname || 'localhost').split(':')[0] + ':35729/livereload.js" defer><\/script>');</script>
-        {% endif %}
 
         {% block scripts %}{% endblock %}
     </body>

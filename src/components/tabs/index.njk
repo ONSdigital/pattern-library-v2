@@ -53,7 +53,7 @@ The typical tab display will show on viewports that are equal to or greater than
 
 For viewports `>= 640px` the following `aria` attributes will be attached to the `DOM` via javascript on load:
 
-{% md %}
+{% markdown %}
 | Element                     | ARIA attribute                        | Description                                                                                                           |
 |-----------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `ul.tab__list`              | `role="tablist"`                      | Convey to screenreaders that the element serves as a container for a set of tabs.                                     |
@@ -63,7 +63,7 @@ For viewports `>= 640px` the following `aria` attributes will be attached to the
 |                             | `aria-selected="true/false"`          | Indicates if the current tab is selected.                                                                             |
 | `.tab__panel`               | `aria-labelledby="TITLE_ID"`          | Indicates the associated tab with the current content.                                                                |
 |                             | `role="tabpanel"`                     | Indicates that the element is a content panel with associated tab.                                                    |
-{% endmd %}
+{% endmarkdown %}
 
 For viewports `< 640px` tabs are displayed as a list and function as a table of contents (TOC). All panels are displayed in the order they are structured. Clicking a TOC link will jump the user to the associated panel.
 

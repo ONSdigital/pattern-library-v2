@@ -1,5 +1,7 @@
 import { unset } from 'lodash';
-import { cookie, setDefaultConsentCookie, setConsentCookie, setCookie } from 'js/cookies-functions';
+
+import { cookie, setConsentCookie, setCookie, setDefaultConsentCookie } from './cookies-functions';
+
 export default class CookiesSettings {
   constructor(component) {
     this.component = component;

@@ -1,0 +1,122 @@
+---
+title: Correct errors
+group: Help users to...
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/lists/_macro.njk" import onsList %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/button/_macro.njk" import onsButton %}
+
+Check that a user enters something into a mandatory field and then check that what they enter is valid. If information is missing or incorrect, advise the user on how to fix it.
+
+## When to use this pattern
+
+Use this pattern when you need to help your users enter correct and required information in a form. Validation should occur after the user submits the form.
+
+## When not to use this pattern
+
+Do not use this pattern to tell the user if there is a problem with the service, or if they do not have permission to do something. For this situation, use the [error or status pages](/patterns/error-status-pages) pattern.
+
+## How to use this pattern
+
+If the user tries to submit the form when there is missing or incorrect information, you must:
+
+<!-- Not using onsList because it won't display <title> in code tags -->
+- show the page again, keeping the user’s information in the form fields as they entered it
+- add “Error: ” before the page `<title>` for screen readers to read out first
+- show an error summary at the top of the page that lists all the errors, and move keyboard focus to it
+- show the error details next to each field that has missing or incorrect information
+
+### Error summary
+
+An [error panel with title](/components/panel#error-with-header) component lists all the errors on the page. It must be displayed at the top of the page’s `<main>` container and above the `<h1>` heading when the page reloads. This ensures it is the first element on the page to be read.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-validation/examples/error-summary/index.njk"})
+}}
+
+The panel contains assistive technology attributes. As soon as the page is loaded, the keyboard focus is on the panel and the user is told about this new information.
+
+#### Error summary panel title
+
+The panel's title lets the user know there is an error with their answer. Use the following content:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "“There is a problem with your answer” if the page is a question"
+            },
+            {
+                "text": "“There is a problem with this page” if the page is not a question"
+            }
+        ]
+    })
+}}
+
+If there is more than one error on the page, the title must display the number of errors, for example, “There are 2 problems with your answer”.
+
+#### Error summary panel body
+
+The panel’s body must contain an ordered list of links for each error. Set `element` to “ol” if using the `onsList` macro. Each list item must:
+{{
+    onsList({
+        "itemsList": [
+            {
+                "text": "describe the specific error and help the user fix it"
+            },
+            {
+                "text": "link to the field or fieldset that contains the validation error on the page"
+            },
+            {
+                "text": "contain a <code>url</code> key value that matches the id of the panel wrapping the field or fieldset with the error – this needs to start with a hash, for example, <code>#email-input</code>, so Javascript can focus the corresponding input"
+            }
+        ]
+    })
+}}
+
+Guidance on specific error messages can be found on the page for each form component.
+
+### Error details
+
+You must use an [error details panel](/components/panel#error) to wrap each field that has missing or incorrect information. This needs to describe the error and help the user fix it.
+
+{{
+    patternlibExample({ "path": "pages/patterns/error-validation/examples/error-details/index.njk"})
+}}
+
+The [error component](/components/error) is called within each component by providing a `text` and `id` value within the `error` object.
+
+The text string for the error details panel must be the same as its corresponding link in the error summary panel.
+
+Guidance on specific error messages can be found on the page for each form component.
+
+## Example
+
+The prototype provides an example of form validation for inputs that have missing or incorrect information. Attempt to submit the form as it is to see the error validation in action.
+
+{{
+    onsPanel({
+        body: "<strong>Note:</strong> The form in the example prototype will always fail validation."
+    })
+}}
+
+<div>
+    {{
+        onsButton({
+            "type": 'button',
+            "text": 'Launch prototype',
+            "classes": 'u-mt-m',
+            "url": '/patterns/error-validation/examples/errors-proto/'
+        })
+    }}
+</div>
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/30",
+        "linkText": "Discuss the ‘Correct errors’ pattern on GitHub"
+    })
+}}

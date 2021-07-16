@@ -1,8 +1,13 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/tabs/_test-template.njk';
-import matchMediaDesktopMock from 'stubs/matchMediaDesktop.stub.spec';
-import matchMediaMobileMock from 'stubs/matchMediaMobile.stub.spec';
-import eventMock from 'stubs/event.stub.spec';
+import '../../../components/tabs/tabs';
+
+import proxyquireify from 'proxyquireify';
+
+import renderTemplate from '../../helpers/render-template';
+import eventMock from '../../stubs/event.stub.spec';
+import matchMediaDesktopMock from '../../stubs/matchMediaDesktop.stub.spec';
+import matchMediaMobileMock from '../../stubs/matchMediaMobile.stub.spec';
+
+const proxyquire = proxyquireify(require);
 
 const params = {
   title: 'Tabs',
@@ -26,14 +31,7 @@ describe('Component: Tabs', () => {
   const mobileMock = matchMediaMobileMock();
   const desktopMock = matchMediaDesktopMock();
 
-  let rewiremock, tabs;
-
-  before(resolve => {
-    awaitPolyfills.then(() => {
-      rewiremock = require('rewiremock/webpack').default;
-      resolve();
-    });
-  });
+  let tabs;
 
   describe('when the viewport is large,', () => {
     if (window.innerWidth > 631) {
@@ -44,21 +42,18 @@ describe('Component: Tabs', () => {
           this[key] = component[key];
         });
 
-        const mockedTabs = require('components/tabs/tabs').default;
+        const mockedTabs = proxyquire('../../../components/tabs/tabs', {
+          '../../../js/utils/matchMedia': {
+            default: desktopMock,
+          },
+        }).default;
+
         tabs = new mockedTabs(this.tabsComponent);
-        rewiremock.disable();
-
-        rewiremock('./src/js/utils/matchMedia')
-          .es6()
-          .withDefault(desktopMock);
-
-        rewiremock.enable();
       });
 
       afterEach(function() {
         if (this.wrapper) {
           this.wrapper.remove();
-          rewiremock.disable();
         }
       });
 
@@ -186,21 +181,18 @@ describe('Component: Tabs', () => {
           this[key] = component[key];
         });
 
-        rewiremock.disable();
+        const mockedTabs = proxyquire('../../../components/tabs/tabs', {
+          '../../../js/utils/matchMedia': {
+            default: mobileMock,
+          },
+        }).default;
 
-        rewiremock('./src/js/utils/matchMedia')
-          .es6()
-          .withDefault(mobileMock);
-
-        rewiremock.enable();
-        const mockedTabs = require('components/tabs/tabs').default;
         tabs = new mockedTabs(this.tabsComponent);
       });
 
       afterEach(function() {
         if (this.wrapper) {
           this.wrapper.remove();
-          rewiremock.disable();
         }
       });
 
@@ -225,7 +217,7 @@ describe('Component: Tabs', () => {
 });
 
 function renderComponent(params) {
-  const html = template.render({ params });
+  const html = renderTemplate('components/tabs/_test-template.njk', { params });
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = html;

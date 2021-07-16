@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from '../../js/domready';
 
 async function submitButton() {
   const buttons = [...document.querySelectorAll('.js-submit-btn')];

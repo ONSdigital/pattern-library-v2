@@ -1,0 +1,38 @@
+---
+title: Addresses
+group: Ask users for...
+---
+{% from "views/partials/example/_macro.njk" import patternlibExample %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/external-link/_macro.njk" import onsExternalLink %}
+
+## When to use this pattern
+
+This pattern should be used when you need to collect an address from a user using the [address finder component](/components/address-finder) inside a form. 
+
+## How to use this pattern
+
+There are two main ways to use this pattern. Addresses can either be [editable](/components/address-finder#editable-addresses) or [non-editable](/components/address-finder#non-editable-addresses). Look at the nunjucks output in both examples below to see how they are configured using the `onsAddressFinder` macro.
+
+The pattern examples below will use client side validation against a set of [validation rules](/components/address-finder#validation).
+### Editable address pattern example
+The manual address inputs are wrapped within a [fieldset](/components/fieldset) and legend. If used within an `onsQuestion` macro you can pass `legendIsQuestionTitle: true` along with `dontWrap: true` to the `onsAddressFinder` macro. 
+
+{{
+    patternlibExample({ "path": "pages/patterns/addresses/examples/address-finder/index.njk" })
+}}
+
+### Non-editable address pattern example
+
+{{
+    patternlibExample({ "path": "pages/patterns/addresses/examples/address-finder-non-editable/index.njk" })
+}}
+
+## Help improve this pattern
+Let us know how we could improve this pattern or share your user research findings.
+{{
+    onsExternalLink({
+        "url": "https://github.com/ONSdigital/design-system/discussions/1387",
+        "linkText": "Discuss the ‘Addresses’ pattern on GitHub"
+    })
+}}

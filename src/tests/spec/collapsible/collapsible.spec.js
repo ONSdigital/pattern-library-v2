@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/collapsible/_test-template.njk';
-import Collapsible from 'components/collapsible/collapsible';
+import Collapsible from '../../../components/collapsible/collapsible';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   id: 'collapsible',
@@ -14,8 +13,6 @@ const params = {
 };
 
 describe('Component: collapsible', function() {
-  before(() => awaitPolyfills);
-
   describe('If the component has a button', function() {
     describe('before the component initialises', function() {
       beforeEach(function() {
@@ -239,7 +236,7 @@ describe('Component: collapsible', function() {
 });
 
 function renderComponent(params) {
-  const html = template.render({ params });
+  const html = renderTemplate('components/collapsible/_test-template.njk', { params });
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = html;

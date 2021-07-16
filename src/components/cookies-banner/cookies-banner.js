@@ -1,4 +1,4 @@
-import { cookie, setDefaultConsentCookie, approveAllCookieTypes, setConsentCookie } from 'js/cookies-functions';
+import { approveAllCookieTypes, cookie, setConsentCookie, setDefaultConsentCookie } from '../../js/cookies-functions';
 
 export default class CookiesBanner {
   constructor(component) {

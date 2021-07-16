@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/duration/_test-template.njk';
-import MutuallyExclusive from 'components/mutually-exclusive/mutually-exclusive';
+import MutuallyExclusive from '../../../components/mutually-exclusive/mutually-exclusive';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   id: 'address-duration',
@@ -43,12 +42,8 @@ const params = {
 describe('Component: Mutually Exclusive Duration Pattern', () => {
   let wrapper, component, yearsInput, monthsInput, checkbox, ariaAlert;
 
-  before(() => {
-    return awaitPolyfills;
-  });
-
   beforeEach(() => {
-    const html = template.render({ params });
+    const html = renderTemplate('components/duration/_test-template.njk', { params });
 
     wrapper = document.createElement('div');
     wrapper.innerHTML = html;

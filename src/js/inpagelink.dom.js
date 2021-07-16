@@ -1,4 +1,4 @@
-import domready from 'js/domready';
+import domready from './domready';
 
 async function initialise() {
   const links = [...document.getElementsByClassName('js-inpagelink')];

@@ -1,4 +1,4 @@
-import domReady from 'js/domready';
+import domready from '../../../js/domready';
 
 describe('DomReady function', function() {
   beforeEach(function() {
@@ -7,7 +7,7 @@ describe('DomReady function', function() {
 
   describe('When the dom is ready', function() {
     beforeEach(function() {
-      domReady(this.spy, true);
+      domready(this.spy);
     });
 
     it('callbacks should be run', function() {

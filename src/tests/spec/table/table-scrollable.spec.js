@@ -1,6 +1,5 @@
-import { awaitPolyfills } from 'js/polyfills/await-polyfills';
-import template from 'components/table/_test-template.njk';
-import TableScroll from 'components/table/scrollable-table';
+import TableScroll from '../../../components/table/scrollable-table';
+import renderTemplate from '../../helpers/render-template';
 
 const params = {
   scrollable: true,
@@ -90,8 +89,6 @@ const params = {
 };
 
 describe('Component: Scrollable table', function() {
-  before(() => awaitPolyfills);
-
   beforeEach(function() {
     const component = renderComponent(params);
 
@@ -133,7 +130,7 @@ describe('Component: Scrollable table', function() {
 });
 
 function renderComponent(params) {
-  const html = template.render({ params });
+  const html = renderTemplate('components/table/_test-template.njk', { params });
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = html;

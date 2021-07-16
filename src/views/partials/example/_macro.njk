@@ -1,5 +1,5 @@
 {% macro patternlibExample(params) %}
-    {% set params = helpers.generateExampleParams(params, helpers.addDependency) %}
+    {% set params = helpers.generateExampleParams(params) %}
     <div class="patternlib-example js-example">
         <div class="patternlib-example__header">
             {% from "components/external-link/_macro.njk" import onsExternalLink %}
